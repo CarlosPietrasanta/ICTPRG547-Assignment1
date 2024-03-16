@@ -10,6 +10,18 @@ namespace Assignment1.Models
         public DateTime? DateRegistered { get; set; }
         public List<Enrollment> Enrollments { get; set; }
 
+        private const string DEFAULT_STUDENT_ID = "No Student ID Provided";
+        private const string DEFAULT_PROGRAM = "No Program Provided";
+        private static readonly List<Enrollment> DEFAULT_ENROLLMENTS = new List<Enrollment>();
+
+        public Student() : base()
+        {
+            StudentId = DEFAULT_STUDENT_ID;
+            Program = DEFAULT_PROGRAM;
+            DateRegistered = null;
+            Enrollments = DEFAULT_ENROLLMENTS;
+        }
+
         public Student(string name,
                        string email,
                        string phoneNumber,
