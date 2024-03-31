@@ -1,4 +1,5 @@
 ﻿using Assignment1.Models;
+using Assignment1.Utils;
 using System;
 using System.Collections.Generic;
 using static Assignment1.Models.Enrollment;
@@ -78,35 +79,35 @@ namespace Assignment1
                                    DateTime.Now.AddYears(-3),
                                    student3Enrollments);
 
-            Console.WriteLine(student1);
-            Console.WriteLine(student2);
-            Console.WriteLine(student3);
+            //Console.WriteLine(student1);
+            //Console.WriteLine(student2);
+            //Console.WriteLine(student3);
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            Console.WriteLine($"Compare student1 and student2 using .Equals() (expected False): {student1.Equals(student2)}");
-            Console.WriteLine($"Compare student1 and student2 using \"==\" (expected False): {student1 == student2}");
-            Console.WriteLine($"Compare student1 and student2 using \"!=\" (expected True): {student1 != student2}");
+            //Console.WriteLine($"Compare student1 and student2 using .Equals() (expected False): {student1.Equals(student2)}");
+            //Console.WriteLine($"Compare student1 and student2 using \"==\" (expected False): {student1 == student2}");
+            //Console.WriteLine($"Compare student1 and student2 using \"!=\" (expected True): {student1 != student2}");
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            Console.WriteLine($"Compare student1 and student3 using .Equals() (expected True): {student1.Equals(student3)}");
-            Console.WriteLine($"Compare student1 and student3 using \"==\" (expected True): {student1 == student3}");
-            Console.WriteLine($"Compare student1 and student3 using \"!=\" (expected False): {student1 != student3}");
+            //Console.WriteLine($"Compare student1 and student3 using .Equals() (expected True): {student1.Equals(student3)}");
+            //Console.WriteLine($"Compare student1 and student3 using \"==\" (expected True): {student1 == student3}");
+            //Console.WriteLine($"Compare student1 and student3 using \"!=\" (expected False): {student1 != student3}");
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            Console.WriteLine($"Compare student1 with null (expected False): {student1.Equals(null)}");
-            Console.WriteLine($"Compare student1 with student 1 (expected True): {student1.Equals(student1)}");
-            Console.WriteLine($"Compare student1 with an Address (expected False): {student1.Equals(student3Address)}");
+            //Console.WriteLine($"Compare student1 with null (expected False): {student1.Equals(null)}");
+            //Console.WriteLine($"Compare student1 with student 1 (expected True): {student1.Equals(student1)}");
+            //Console.WriteLine($"Compare student1 with an Address (expected False): {student1.Equals(student3Address)}");
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            Console.WriteLine($"Student 1 HashCode: {student1.GetHashCode()}");
-            Console.WriteLine($"Student 2 HashCode: {student2.GetHashCode()}");
-            Console.WriteLine($"Student 3 HashCode: {student3.GetHashCode()}");
+            //Console.WriteLine($"Student 1 HashCode: {student1.GetHashCode()}");
+            //Console.WriteLine($"Student 2 HashCode: {student2.GetHashCode()}");
+            //Console.WriteLine($"Student 3 HashCode: {student3.GetHashCode()}");
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
             Console.WriteLine($"Student 1 (Id = {student1.StudentId}) .CompareTo() Student 2 (Id = {student2.StudentId}): {student1.CompareTo(student2)}");
             Console.WriteLine($"Student 1 (Id = {student1.StudentId}) .CompareTo() Student 3 (Id = {student3.StudentId}): {student1.CompareTo(student3)}");
@@ -132,6 +133,36 @@ namespace Assignment1
             Console.WriteLine($"Student 2 (Id = {student2.StudentId}) <= Student 3 (Id = {student3.StudentId}): {student2 <= student3}");
             Console.WriteLine($"Student 2 (Id = {student2.StudentId}) > Student 3 (Id = {student3.StudentId}): {student2 > student3}");
             Console.WriteLine($"Student 2 (Id = {student2.StudentId}) >= Student 3 (Id = {student3.StudentId}): {student2 >= student3}");
+
+            Console.WriteLine();
+
+            Student[] studentArray = TestData.CreateTestStudentArray();
+
+            Console.WriteLine("Original Array Order:");
+
+            foreach (var item in studentArray)
+            {
+                Console.WriteLine("\t" + item.StudentId);
+            }
+
+            int student1IndexLinearSearch = UtilityClass.LinearSeachArray(studentArray, student1);
+
+            Console.WriteLine($"\nIndex of Student 1 Linear Search (Id {student1.StudentId}): {student1IndexLinearSearch}\n");
+
+            UtilityClass.BubbleSort(studentArray);
+
+            Console.WriteLine("Sorted Array Order:");
+
+            foreach (var item in studentArray)
+            {
+                Console.WriteLine("\t" + item.StudentId);
+            }
+
+            Console.WriteLine("\nNow we can use the binary search:");
+
+            int student1IndexBinarySearch = UtilityClass.BinarySearchArray(studentArray, student1);
+
+            Console.WriteLine($"\nIndex of Student 1 Binary Search (Id {student1.StudentId}): {student1IndexBinarySearch}\n");
 
             Console.ReadLine();
         }

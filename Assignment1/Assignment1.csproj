@@ -50,6 +50,7 @@
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\TestData.cs" />
     <Compile Include="Utils\UtilityClass.cs" />
   </ItemGroup>
   <ItemGroup>
