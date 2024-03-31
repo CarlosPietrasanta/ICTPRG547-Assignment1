@@ -106,6 +106,33 @@ namespace Assignment1
             Console.WriteLine($"Student 2 HashCode: {student2.GetHashCode()}");
             Console.WriteLine($"Student 3 HashCode: {student3.GetHashCode()}");
 
+            Console.WriteLine();
+
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) .CompareTo() Student 2 (Id = {student2.StudentId}): {student1.CompareTo(student2)}");
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) .CompareTo() Student 3 (Id = {student3.StudentId}): {student1.CompareTo(student3)}");
+            Console.WriteLine($"Student 2 (Id = {student2.StudentId}) .CompareTo() Student 3 (Id = {student3.StudentId}): {student2.CompareTo(student3)}");
+            
+            Console.WriteLine();
+
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) < Student 2 (Id = {student2.StudentId}): {student1 < student2}");
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) <= Student 2 (Id = {student2.StudentId}): {student1 <= student2}");
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) > Student 2 (Id = {student2.StudentId}): {student1 > student2}");
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) >= Student 2 (Id = {student2.StudentId}): {student1 >= student2}");
+
+            Console.WriteLine();
+
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) < Student 3 (Id = {student3.StudentId}): {student1 < student3}");
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) <= Student 3 (Id = {student3.StudentId}): {student1 <= student3}");
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) > Student 3 (Id = {student3.StudentId}): {student1 > student3}");
+            Console.WriteLine($"Student 1 (Id = {student1.StudentId}) >= Student 3 (Id = {student3.StudentId}): {student1 >= student3}");
+
+            Console.WriteLine();
+
+            Console.WriteLine($"Student 2 (Id = {student2.StudentId}) < Student 3 (Id = {student3.StudentId}): {student2 < student3}");
+            Console.WriteLine($"Student 2 (Id = {student2.StudentId}) <= Student 3 (Id = {student3.StudentId}): {student2 <= student3}");
+            Console.WriteLine($"Student 2 (Id = {student2.StudentId}) > Student 3 (Id = {student3.StudentId}): {student2 > student3}");
+            Console.WriteLine($"Student 2 (Id = {student2.StudentId}) >= Student 3 (Id = {student3.StudentId}): {student2 >= student3}");
+
             Console.ReadLine();
         }
     }

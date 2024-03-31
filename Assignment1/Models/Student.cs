@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Assignment1.Models
 {
-    public class Student : Person
+    public class Student : Person, IComparable, IComparable<Student>
     {
         public string StudentId { get; set; }
         public string Program { get; set; }
@@ -30,7 +30,7 @@ namespace Assignment1.Models
                        string program,
                        DateTime dateRegisted,
                        List<Enrollment> enrollments)
-            :base(name, email, phoneNumber, address)
+            : base(name, email, phoneNumber, address)
         {
             StudentId = studentId;
             Program = program;
@@ -63,7 +63,7 @@ namespace Assignment1.Models
         /// <param name="student1"></param>
         /// <param name="student2"></param>
         /// <returns></returns>
-        public static bool operator == (Student student1, Student student2)
+        public static bool operator ==(Student student1, Student student2)
         {
             return Equals(student1, student2);
         }
@@ -74,7 +74,7 @@ namespace Assignment1.Models
         /// <param name="student1"></param>
         /// <param name="student2"></param>
         /// <returns></returns>
-        public static bool operator != (Student student1, Student student2)
+        public static bool operator !=(Student student1, Student student2)
         {
             return !Equals(student1, student2);
         }
@@ -95,6 +95,91 @@ namespace Assignment1.Models
                 $"\tName: {Name}\n" +
                 $"\tAddress: {Address}\n" +
                 $"\tPerson Information: \n{base.ToString()}";
+        }
+
+        /// <summary>
+        /// Compares this student with another object for sorting.
+        /// </summary>
+        /// <param name="other">The object to compare to.</param>
+        /// <returns>
+        ///     Exceptions if passed argument is null or not Student object.
+        ///     A negative value if this student's ID comes before, 0 if they're equal, and a positive value if it should be placed after.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "other" is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when "other" is not a Student.</exception>
+        public int CompareTo(object other)
+        {
+            if (other == null)
+                throw new ArgumentNullException("other");
+            if (!(other is Student))
+                throw new ArgumentException("Expected Student instance", "other");
+            return CompareTo((Student)other);
+        }
+
+        /// <summary>
+        /// Compares this student with another student based on their IDs for sorting.
+        /// </summary>
+        /// <param name="other">The student to compare to.</param>
+        /// <returns>
+        ///     A negative value if this student's ID comes before, 0 if they're equal, and a positive value if it should be placed after.
+        /// </returns>
+        public int CompareTo(Student other)
+        {
+            return StudentId.CompareTo(other.StudentId);
+        }
+
+        public static bool operator <(Student x, Student y)
+        {
+            int comparisonResult = x.CompareTo(y);
+
+            if (comparisonResult < 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator <=(Student x, Student y)
+        {
+            int comparisonResult = x.CompareTo(y);
+
+            if (comparisonResult <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator >(Student x, Student y)
+        {
+            int comparisonResult = x.CompareTo(y);
+
+            if (comparisonResult > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator >=(Student x, Student y)
+        {
+            int comparisonResult = x.CompareTo(y);
+
+            if (comparisonResult >= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
