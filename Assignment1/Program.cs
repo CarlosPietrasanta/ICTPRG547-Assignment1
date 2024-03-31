@@ -164,6 +164,17 @@ namespace Assignment1
 
             Console.WriteLine($"\nIndex of Student 1 Binary Search (Id {student1.StudentId}): {student1IndexBinarySearch}\n");
 
+            Console.WriteLine("Now let's test Bubble Sort in descending order:");
+
+            UtilityClass.BubbleSortDescendingOrder(studentArray);
+
+            Console.WriteLine("Sorted Array Descending Order:");
+
+            foreach (var item in studentArray)
+            {
+                Console.WriteLine("\t" + item.StudentId);
+            }
+
             Console.ReadLine();
         }
     }
